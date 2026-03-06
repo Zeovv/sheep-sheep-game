@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+/* 全局基础布局，确保应用填满视口并移除页面级滚动条 */
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow: hidden;
+}
+
+@keyframes slot-insert {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slot-remove {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.slot-insert {
+  animation: slot-insert 0.22s ease-out;
+}
+
+.slot-remove {
+  animation: slot-remove 0.22s ease-in forwards;
+}
+
+@keyframes board-shuffle {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(-4px, 2px) rotate(-2deg);
+  }
+  50% {
+    transform: translate(4px, -2px) rotate(2deg);
+  }
+  75% {
+    transform: translate(-2px, 2px) rotate(-1deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+.board-shuffle {
+  animation: board-shuffle 0.4s ease;
+}
+
+@keyframes victory-pop {
+  0% {
+    transform: scale(0.8);
+  }
+  60% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes defeat-shake {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes victory-bg {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 40px 40px, -40px -40px;
+  }
+}
+
+.victory-overlay {
+  background-image: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.4), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.4), transparent 55%);
+  background-color: rgba(0, 0, 0, 0.35);
+  animation: victory-bg 2.4s linear infinite alternate;
+}
+
+.defeat-overlay {
+  background: radial-gradient(circle at 50% 0%, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.75));
+}
+
+.victory-modal {
+  background: linear-gradient(135deg, #fff7cc, #ffe8a3);
+  border: 4px solid #f6c453;
+  animation: victory-pop 0.38s ease-out;
+}
+
+.defeat-modal {
+  background: linear-gradient(135deg, #ffe0e0, #ffd0d0);
+  border: 4px solid #ff8b8b;
+  animation: defeat-shake 0.38s ease-out;
+}
