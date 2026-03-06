@@ -4,6 +4,10 @@
 
 一个基于 **React + TypeScript** 的高仿「羊了个羊」消除游戏，实现了多层叠牌、遮挡判定、道具系统以及移动端优先的自适应布局，并在浏览器中还原接近原版的视觉与交互体验。
 
+## 立即试玩: 
+
+[https://ylgy.fun/](https://ylgy.fun/) or [https://sheep-sheep-game.vercel.app/](https://sheep-sheep-game.vercel.app/)
+
 ## 核心功能
 
 - **核心消除算法与卡牌堆叠逻辑**：  
