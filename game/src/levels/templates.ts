@@ -16,33 +16,6 @@ export interface LevelTemplate {
 const rect = (w: number, h: number, fill: Cell = 1): Cell[][] =>
   Array.from({ length: h }, () => Array.from({ length: w }, () => fill));
 
-const carveRect = (
-  rows: Cell[][],
-  x0: number,
-  y0: number,
-  w: number,
-  h: number
-) => {
-  for (let y = y0; y < y0 + h; y += 1) {
-    for (let x = x0; x < x0 + w; x += 1) {
-      if (rows[y] && rows[y][x] !== undefined) rows[y][x] = 0;
-    }
-  }
-};
-
-const ring = (w: number, h: number): Cell[][] => {
-  const rows = rect(w, h, 0);
-  for (let x = 0; x < w; x += 1) {
-    rows[0][x] = 1;
-    rows[h - 1][x] = 1;
-  }
-  for (let y = 0; y < h; y += 1) {
-    rows[y][0] = 1;
-    rows[y][w - 1] = 1;
-  }
-  return rows;
-};
-
 /**
  * mainGateTemplate：接近截图的“门框 + 台阶塔”形态
  *

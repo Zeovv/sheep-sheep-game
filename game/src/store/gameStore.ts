@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 import type { GameState, HistoryEntry, LevelCard, RuntimeCard, SlotAction } from '../types';
 import { recomputeClickability } from '../utils/collision';
-import { POP_BUFFER_POSITIONS } from '../constants';
 
 const createRuntimeCardsFromLevelCards = (levelCards: LevelCard[]): RuntimeCard[] => {
   const runtimeCards: RuntimeCard[] = levelCards.map((card) => ({
