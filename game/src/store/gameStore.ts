@@ -239,11 +239,14 @@ export const useGameStore = create<GameState>((set) => ({
 
         const cardsWithClickable = recomputeClickability(updatedCards);
 
+        // 累积缓冲区中的牌，不覆盖之前移出的牌
+        const newBuffer = [...state.buffer, ...toMove.map((c) => c.id)];
+
         return {
           ...state,
           cards: cardsWithClickable,
           slot: remainingSlot,
-          buffer: toMove.map((c) => c.id),
+          buffer: newBuffer,
           lastSlotAction: null
         };
       });

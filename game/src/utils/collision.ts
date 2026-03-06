@@ -12,7 +12,7 @@ export const isCardObscured = (
 ): boolean => {
   return allCards.some((upper, upperIndex) => {
     if (upper.id === target.id) return false;
-    if (upper.removed || upper.inSlot) return false;
+    if (upper.removed || upper.inSlot || upper.inBuffer) return false;
     if (upper.z < target.z) return false;
     if (upper.z === target.z && upperIndex <= targetIndex) return false;
 
